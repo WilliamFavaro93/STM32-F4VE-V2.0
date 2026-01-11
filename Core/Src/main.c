@@ -17,11 +17,11 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
+#include "app.h"
 #include "main.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "app.h"
 
 /* USER CODE END Includes */
 
@@ -103,7 +103,7 @@ int main(void)
   MX_USART3_UART_Init();
   MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
-  this_app();
+  app();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -250,7 +250,7 @@ static void MX_SPI1_Init(void)
   hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
   hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
   hspi1.Init.NSS = SPI_NSS_SOFT;
-  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_32;
+  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_4;
   hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
@@ -400,7 +400,7 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(GPIOA, USER_LED1_Pin|USER_LED2_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0|GPIO_PIN_7, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, DATAFLASH_NCS_Pin|GPIO_PIN_7, GPIO_PIN_RESET);
 
   /*Configure GPIO pins : USER_BUTTON3_Pin USER_BUTTON2_Pin */
   GPIO_InitStruct.Pin = USER_BUTTON3_Pin|USER_BUTTON2_Pin;
@@ -421,8 +421,8 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : PB0 PB7 */
-  GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_7;
+  /*Configure GPIO pins : DATAFLASH_NCS_Pin PB7 */
+  GPIO_InitStruct.Pin = DATAFLASH_NCS_Pin|GPIO_PIN_7;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;

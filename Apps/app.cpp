@@ -6,21 +6,26 @@
  */
 
 #include "app.h"
+
 #include "eeprom.hpp"
 #include "main.h"
 #include "stdio.h"
 
 #include <array>
+
 std::array<int, 20> buffer;
 
 #include "platform.hpp"
 #include "sw_timer.hpp"
+#include "hal.hpp"
 
 sw_timer led1_timer;
 sw_timer led2_timer;
 
-void this_app()
+void app()
 {
+	uint32_t hal_error = 0;
+
 	led1_timer.preset_time = 1 * seconds;
 	led1_timer.start_counting();
 
@@ -33,6 +38,18 @@ void this_app()
 	eeprom eeprom_1(1,2);
 	eeprom_1.read(0, 0, 0);
 	printf("Hello World");
+
+//	extern SPI_HandleTypeDef hspi1;
+//	flash dataflash(&hspi1,
+//			DATAFLASH_NCS_GPIO_Port, DATAFLASH_NCS_Pin,
+//			NULL, 0);
+	dataflash.enable_write();
+	do
+	{
+		hal_error = dataflash.read_status();
+	}
+	while(dataflash.is_busy() or hal_error);
+	hal_error = dataflash.read_jedec_id();
 
 	while(1)
 	{
@@ -54,15 +71,8 @@ void this_app()
 			led2_timer.restart_counting();
 		}
 
-		while(k1_button.read_pin());
+		hal::delay(2000);
+
+//		while(k1_button.read_pin());
 	}
-}
-
-
-void generic_function(/*param*/)
-{
-	//creation of used variables
-	//check parameters
-	//do
-	//return ret
 }

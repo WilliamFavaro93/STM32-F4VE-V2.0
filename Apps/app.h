@@ -13,7 +13,7 @@
 extern "C" {
 #endif
 
-void this_app();
+void app();
 
 #ifdef __cplusplus
 } // extern "C"

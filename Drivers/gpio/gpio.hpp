@@ -13,9 +13,14 @@
 class gpio
 {
 private:
-	GPIO_TypeDef* port_;
-	uint16_t pin_;
+	GPIO_TypeDef* port;
+	uint16_t pin;
 public:
+	enum pinstate
+	{
+		LOW = 0,
+		HIGH = 1
+	};
 	gpio(GPIO_TypeDef* port, uint16_t pin);
 	bool read_pin();
 	void write_pin(bool pinstate);

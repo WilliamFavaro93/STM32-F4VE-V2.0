@@ -67,6 +67,8 @@ void Error_Handler(void);
 #define USER_LED1_GPIO_Port GPIOA
 #define USER_LED2_Pin GPIO_PIN_7
 #define USER_LED2_GPIO_Port GPIOA
+#define DATAFLASH_NCS_Pin GPIO_PIN_0
+#define DATAFLASH_NCS_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 
