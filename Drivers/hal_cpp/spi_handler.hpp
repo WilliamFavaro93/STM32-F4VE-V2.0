@@ -5,16 +5,20 @@
  *      Author: William
  */
 
-#ifndef HSPI_HSPI_HPP_
-#define HSPI_HSPI_HPP_
+#ifndef SPI_HANDLER_HPP_
+#define SPI_HANDLER_HPP_
 
-#include "main.h"
+#ifdef __SPI_H__
+	#include "spi.h"
+#else
+	#include "main.h"
+#endif
 
-class hspi
+class spi_handler
 {
-	SPI_HandleTypeDef* spi;
+	SPI_HandleTypeDef* hspi;
 public:
-	hspi(SPI_HandleTypeDef* hspi);
+	spi_handler(SPI_HandleTypeDef* hspi);
 	void init();
 	uint32_t get_state();//TODO
 	bool is_not_init();//TODO
@@ -30,4 +34,4 @@ public:
 };
 
 
-#endif /* HSPI_HSPI_HPP_ */
+#endif /* HSPI_SPI_HANDLER_HPP_ */

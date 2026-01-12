@@ -117,7 +117,7 @@ int flash::read_jedec_id()
 
 	tdata[0] = (JedecFlash::Command::ReadJedecID);
 
-	//send txmsg
+	//send tdata
 	enable();
 	hal_status = spi.transmitreceive(tdata, rdata, sizeof(tdata), 10);
 	disable();
@@ -136,7 +136,7 @@ int flash::enable_write()
 
 	tdata[0] = (JedecFlash::Command::WriteEnable);
 
-	//send txmsg
+	//send tdata
 	enable();
 	hal_status = spi.transmit(tdata, sizeof(tdata), 10);
 	disable();
@@ -151,7 +151,7 @@ int flash::disable_write()
 
 	tdata[0] = (JedecFlash::Command::WriteDisable);
 
-	//send txmsg
+	//send tdata
 	enable();
 	hal_status = spi.transmit(tdata, sizeof(tdata), 10);
 	disable();
@@ -175,7 +175,7 @@ int flash::write_data(uint32_t address, uint8_t* data, uint16_t length)
 	if(address + length > memory)
 		return -EINVAL;
 
-	//prepare txmsg
+	//prepare tdata
 	tdata[0] = (JedecFlash::Command::PageProgram);
 	if(memory < 0xFFFFFF)
 	{
@@ -195,7 +195,7 @@ int flash::write_data(uint32_t address, uint8_t* data, uint16_t length)
 		tdata[5+i] = data[i];
 	}
 
-	//send txmsg
+	//send tdata
 	enable();
 	hal_status = spi.transmit(tdata, size, 10);
 	disable();

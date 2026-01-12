@@ -5,8 +5,8 @@
  *      Author: William
  */
 
-#ifndef HAL_HAL_HPP_
-#define HAL_HAL_HPP_
+#ifndef HAL_HPP_
+#define HAL_HPP_
 
 #include "main.h"
 
@@ -24,4 +24,4 @@ namespace hal
 	uint32_t get_unique_device_id_third_word();
 };
 
-#endif /* HAL_HAL_HPP_ */
+#endif /* HAL_HPP_ */

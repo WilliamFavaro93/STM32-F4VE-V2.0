@@ -5,10 +5,14 @@
  *      Author: William
  */
 
-#ifndef GPIO_GPIO_HPP_
-#define GPIO_GPIO_HPP_
+#ifndef GPIO_HPP_
+#define GPIO_HPP_
 
-#include "main.h"
+#ifdef __GPIO_H__
+	#include "gpio.h"
+#else
+	#include "main.h"
+#endif
 
 class gpio
 {
@@ -28,4 +32,4 @@ public:
 };
 
 
-#endif /* GPIO_GPIO_HPP_ */
+#endif /* GPIO_HPP_ */

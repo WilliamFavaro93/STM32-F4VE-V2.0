@@ -8,8 +8,8 @@
 #ifndef FLASH_FLASH_HPP_
 #define FLASH_FLASH_HPP_
 
+#include <spi_handler.hpp>
 #include "gpio.hpp"
-#include "hspi.hpp"
 
 //JEDEC standard
 
@@ -87,7 +87,7 @@ class flash
 {
 private:
 	//io interface
-	hspi spi;
+	spi_handler spi;
 	gpio not_enable;
 	gpio not_reset;
 
@@ -118,9 +118,9 @@ public:
 	int read_status();
 	int enable_write();
 	int disable_write();
-	int write_data(uint32_t address, uint8_t* txdata, uint16_t length);
-	int read_data(uint32_t address, uint8_t* rxdata, uint16_t length);
-	int fast_read_data(uint32_t address, uint8_t* rxdata, uint16_t length);
+	int write_data(uint32_t address, uint8_t* tdata, uint16_t length);
+	int read_data(uint32_t address, uint8_t* rdata, uint16_t length);
+	int fast_read_data(uint32_t address, uint8_t* rdata, uint16_t length);
 	int erase_sector(uint32_t sector);
 	int erase_half_block(uint32_t half_block);
 	int erase_block(uint32_t block);
