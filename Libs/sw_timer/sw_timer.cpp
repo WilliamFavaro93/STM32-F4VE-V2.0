@@ -64,3 +64,19 @@ void sw_timer::restart_counting()
 	update();
 	elapsed_time = preset_time;
 }
+
+uint32_t sw_timer::get_elapsed_time()
+{
+	return elapsed_time;
+}
+
+uint32_t sw_timer::get_preset_time()
+{
+	return preset_time;
+}
+
+
+void sw_timer::set_preset_time(uint32_t preset_time)
+{
+	this->preset_time = preset_time;
+}

@@ -30,6 +30,9 @@ private:
 	/** Stores the elapsed time since the timer started */
 	uint32_t elapsed_time;
 
+	/** Preset timeout value for the timer (e.g., in milliseconds) */
+	uint32_t preset_time;
+
 	/** Returns the current system time (e.g., in milliseconds) */
 	uint32_t get_time();
 
@@ -40,15 +43,15 @@ public:
 	/** Constructor: initializes timer state */
 	sw_timer();
 
-	/** Preset timeout value for the timer (e.g., in milliseconds) */
-	uint32_t preset_time;
-
 	/** Starts the timer counting from the current time */
 	void start_counting();
 
 	/** Stops the timer and freezes elapsed time */
 	void stop_counting();
 
+	uint32_t get_elapsed_time();
+	uint32_t get_preset_time();
+	void set_preset_time(uint32_t preset_time);
 	/**
 	 * Checks whether the elapsed time has reached or exceeded preset_time
 	 * @return true if timeout occurred, false otherwise

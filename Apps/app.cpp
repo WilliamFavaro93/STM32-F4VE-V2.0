@@ -53,7 +53,7 @@ void app()
 
 	while(1)
 	{
-		user_led1.write_pin(0);
+		user_led1.write_pin(k0.is_pressed());
 		user_led2.write_pin(k1.is_pressed());
 
 //		HAL_GPIO_TogglePin(USER_LED1_GPIO_Port, USER_LED1_Pin);
